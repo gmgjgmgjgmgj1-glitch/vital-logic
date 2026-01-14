@@ -1,0 +1,7 @@
+{
+  "name": "Precision Nutrition Counselor - VitalLogic",
+  "description": "A high-end platform for data-driven personalized nutrition counseling, featuring an AI-powered diagnostic preview and service roadmap.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
