@@ -1,30 +1,24 @@
-/* VitalLogic - Precision Nutrition Website Styles */
+/* VitalLogic - 50代からの精密栄養カウンセリング */
 
-/* Smooth scrollbar */
+/* Warm scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #FAF5ED;
 }
 ::-webkit-scrollbar-thumb {
-  background: #94a3b8;
+  background: #C9A2B0;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #059669;
+  background: #976B7E;
 }
 
-/* Custom animations */
+/* Animations */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeIn {
@@ -32,36 +26,14 @@
   to { opacity: 1; }
 }
 
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes float {
+@keyframes gentleFloat {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
+  50% { transform: translateY(-8px); }
 }
 
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(5, 150, 105, 0.2); }
-  50% { box-shadow: 0 0 40px rgba(5, 150, 105, 0.4); }
+@keyframes softPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
 @keyframes gradient-shift {
@@ -70,7 +42,12 @@
   100% { background-position: 0% 50%; }
 }
 
-/* Animation utility classes */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Utility classes */
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out forwards;
 }
@@ -79,25 +56,17 @@
   animation: fadeIn 0.6s ease-out forwards;
 }
 
-.animate-slide-in-left {
-  animation: slideInLeft 0.8s ease-out forwards;
+.animate-gentle-float {
+  animation: gentleFloat 5s ease-in-out infinite;
 }
 
-.animate-slide-in-right {
-  animation: slideInRight 0.8s ease-out forwards;
-}
-
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
+.animate-soft-pulse {
+  animation: softPulse 3s ease-in-out infinite;
 }
 
 .animate-gradient {
   background-size: 200% 200%;
-  animation: gradient-shift 6s ease infinite;
+  animation: gradient-shift 8s ease infinite;
 }
 
 /* Stagger children */
@@ -105,94 +74,97 @@
 .stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
 .stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
 .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
-.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
-.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
 
-/* Glass morphism */
-.glass {
-  background: rgba(255, 255, 255, 0.7);
+/* Warm glass morphism */
+.glass-warm {
+  background: rgba(253, 251, 247, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(201, 162, 176, 0.2);
 }
 
-/* Selection color */
+/* Selection */
 ::selection {
-  background: #059669;
+  background: #C9A2B0;
   color: white;
 }
 
-/* Focus ring for accessibility */
+/* Accessibility */
 *:focus-visible {
-  outline: 2px solid #059669;
+  outline: 2px solid #976B7E;
   outline-offset: 2px;
 }
 
-/* Smooth transitions for interactive elements */
+/* Smooth transitions */
 a, button {
   transition: all 0.3s ease;
 }
 
-/* Hide scrollbar on mobile nav if needed */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* Markdown content styling in AI analysis */
-.prose-invert h1,
-.prose-invert h2,
-.prose-invert h3,
-.prose-invert h4 {
-  color: #a7f3d0;
+/* Markdown styling for AI analysis */
+.prose-warm h1,
+.prose-warm h2,
+.prose-warm h3,
+.prose-warm h4 {
+  color: #E1C9D1;
   margin-top: 1.2em;
   margin-bottom: 0.5em;
   font-weight: 700;
+  font-family: 'Noto Serif JP', serif;
 }
 
-.prose-invert ul {
+.prose-warm ul {
   list-style-type: disc;
   padding-left: 1.5em;
   margin: 0.5em 0;
 }
 
-.prose-invert ol {
+.prose-warm ol {
   list-style-type: decimal;
   padding-left: 1.5em;
   margin: 0.5em 0;
 }
 
-.prose-invert li {
+.prose-warm li {
   margin: 0.3em 0;
 }
 
-.prose-invert strong {
-  color: #6ee7b7;
+.prose-warm strong {
+  color: #E1C9D1;
 }
 
-.prose-invert em {
-  color: #d1fae5;
+.prose-warm em {
+  color: #F0E4E8;
   font-style: italic;
 }
 
-.prose-invert blockquote {
-  border-left: 3px solid #059669;
+.prose-warm blockquote {
+  border-left: 3px solid #976B7E;
   padding-left: 1em;
   margin: 1em 0;
-  color: #94a3b8;
+  color: #C9A2B0;
 }
 
-/* Loading skeleton */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+/* Decorative divider */
+.divider-ornament {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.divider-ornament::before,
+.divider-ornament::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #E1C9D1, transparent);
 }
 
+/* Skeleton loading */
 .skeleton {
-  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background: linear-gradient(90deg, #F0E4E8 25%, #F9F5F6 50%, #F0E4E8 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s ease-in-out infinite;
 }
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
