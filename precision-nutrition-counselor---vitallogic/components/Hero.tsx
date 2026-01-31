@@ -2,17 +2,29 @@
 import React, { useState, useEffect } from 'react';
 import { nutritionService } from '../services/geminiService';
 
+const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&q=80&w=1000";
+
 const Hero: React.FC = () => {
   const [heroImage, setHeroImage] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchHeroImage = async () => {
-      const img = await nutritionService.generateFantasyImage(
-        "A sophisticated laboratory where holographic data and glowing natural botanical elements merge, viewed through a professional lens, cinematic lighting"
-      );
-      setHeroImage(img);
-      setLoading(false);
+      try {
+        if (!process.env.API_KEY && !process.env.GEMINI_API_KEY) {
+          setHeroImage(FALLBACK_IMAGE);
+          setLoading(false);
+          return;
+        }
+        const img = await nutritionService.generateFantasyImage(
+          "A sophisticated laboratory where holographic data and glowing natural botanical elements merge, viewed through a professional lens, cinematic lighting"
+        );
+        setHeroImage(img || FALLBACK_IMAGE);
+      } catch {
+        setHeroImage(FALLBACK_IMAGE);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchHeroImage();
   }, []);
