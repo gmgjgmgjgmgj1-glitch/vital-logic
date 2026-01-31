@@ -18,9 +18,14 @@ const AIAnalysis: React.FC = () => {
     setVisualResult(null);
     
     try {
+      if (!process.env.API_KEY && !process.env.GEMINI_API_KEY) {
+        setResult("**API Keyが設定されていません。**\n\n`.env.local`ファイルに`GEMINI_API_KEY=your_key_here`を設定し、開発サーバーを再起動してください。\n\n設定後、AI精密栄養分析をご利用いただけます。");
+        setLoading(false);
+        return;
+      }
       const response = await nutritionService.analyzeSymptoms(query);
       setResult(response);
-      
+
       // Generate associated visualization
       setGeneratingImage(true);
       const imgPrompt = `A high-detail 3D render of a glowing biological essence or crystalline structure floating in a serene, professional medical-tech environment, vibrant and balanced lighting, representing harmony for ${query.substring(0, 30)}`;
